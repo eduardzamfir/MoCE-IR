@@ -28,6 +28,7 @@ To our surprise, this preference effectively drives task-specific allocation, as
 Extensive experiments validate our approach, demonstrating the ability to bypass irrelevant experts during inference while maintaining superior performance. The proposed MoCE-IR model outperforms state-of-the-art methods, affirming its efficiency and practical applicability.
 </details>
 
+![](assets/method.png)
 
 ## Citation
 
