@@ -9,12 +9,12 @@
 
 #### **<sup>1</sup> University of Würzburg, Germany - <sup>2</sup> INSAIT Sofia University, Bulgaria - <sup>3</sup> Shanghai Jiao Tong University, China**
 
-[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](http://arxiv.org/)
+[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](http://arxiv.org/abs/2411.18466)
 [![project](https://img.shields.io/badge/project-page-brightgreen)](https://eduardzamfir.github.io)
 
 
 ## Latest
-- `11/27/2024`: Repository is created.
+- `11/28/2024`: Repository is created.
 
 ## Method
 <br>
@@ -34,13 +34,13 @@ Extensive experiments validate our approach, demonstrating the ability to bypass
 
 If you find our work helpful, please consider citing the following paper and/or ⭐ the repo.
 ```
-@misc{zamfir2024complexity,
+@misc{zamfir2024complexityexperts,
       title={Complexity Experts are Task-Discriminative Learners for Any Image Restoration}, 
       author={Eduard Zamfir and Zongwei Wu and Nancy Mehta and Yuedong Tan and Danda Pani Paudel and Yulun Zhang and Radu Timofte},
       year={2024},
-      eprint={2405.15475},
+      eprint={2411.18466},
       archivePrefix={arXiv},
-      primaryClass={cs.CV}
+      primaryClass={cs.CV},
 }
 ```
 
