@@ -1,4 +1,4 @@
-# MoCE-IR
+# MoCE-IR - CVPR 2025
 
 
 
@@ -14,6 +14,7 @@
 
 
 ## Latest
+- `02/27/2025`: Our work got accepted at CVPR 2025! Stay tuned for full code & model release. 🎉🥳
 - `11/28/2024`: Repository is created.
 
 ## Method
