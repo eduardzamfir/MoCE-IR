@@ -76,68 +76,106 @@ Pre-trained checkpoints and visual results can be downloaded [here](https://driv
 ### **Evaluation**
 For testing the pre-trained checkpoints please use following commands. Replace `[MODEL]_` with desired model configuration. Argument `--benchmarks` accepts also a list of `str` and will iterate over defined testsets.
 
-#### All-in-One: 3 Degradations
-**1. Rain100L**
-`````
-python src/test.py --benchmarks derain --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
-`````
-**2. SOTS**
-`````
-python src/test.py --benchmarks dehaze --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
-`````
-**3. CBSD68**
-`````
-python src/test.py --benchmarks denoise_15 denoise_25 denoise_50 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
-`````
+<br>
+<details>
+  <summary>
+  <font >All-in-One: 3 Degradations</font>
+  </summary>
+  
+  **1. Rain100L**
+  `````
+  python src/test.py --benchmarks derain --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  `````
+  **2. SOTS**
+  `````
+  python src/test.py --benchmarks dehaze --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  `````
+  **3. CBSD68**
+  `````
+  python src/test.py --benchmarks denoise_15 denoise_25 denoise_50 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  `````
 
-#### All-in-One: 5 Degradations
-**1. Rain100L**
-`````
-python src/test.py --benchmarks derain --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain deblur synllie
-`````
-**2. SOTS**
-`````
-python src/test.py --benchmarks dehaze --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
-`````
-**3. CBSD68**
-`````
-python src/test.py --benchmarks denoise_25 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
-`````
-**4. GoPro**
-`````
-python src/test.py --benchmarks gopro --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
-`````
-**5. LoLv1**
-`````
-python src/test.py --benchmarks lolv1 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
-`````
+</details>
+
+
+<br>
+<details>
+  <summary>
+  <font >All-in-One: 5 Degradations</font>
+  </summary>
+  
+  **1. Rain100L**
+  `````
+  python src/test.py --benchmarks derain --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain deblur synllie
+  `````
+  **2. SOTS**
+  `````
+  python src/test.py --benchmarks dehaze --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  `````
+  **3. CBSD68**
+  `````
+  python src/test.py --benchmarks denoise_25 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  `````
+  **4. GoPro**
+  `````
+  python src/test.py --benchmarks gopro --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  `````
+  **5. LoLv1**
+  `````
+  python src/test.py --benchmarks lolv1 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  `````
+
+</details>
+
 
 ### **Training**
 
 Use following commands to train the *lightweight* `MoCE-IR-S` or *heavy* `MoCE-IR` version either on three or five degradations. You can specify with `--gpus` whether you want to train on a single (`1`) or multiple gpus (`>1`). However, `--batch_size` defines the batch size per gpu. We trained our networks on 4x NVIDIA 4090 cards.
- 
-**1. All-in-One: 3 Degradations**
-`````
-python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
-`````
 
-**2. All-in-One: 5 Degradations**
-`````
-python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 deblur synllie --trainset standard --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
-`````
 
-**3. CDD11: Composited Degradations**
+<br>
+<details>
+  <summary>
+  <font >All-in-One: 3 Degradations</font>
+  </summary>
 
-You can also train our models from scratch on the composited degradations dataset [CDD11](https://github.com/gy65896/OneRestore) with four different setups running following commands:
+  `````
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
+  `````
 
-+ `--trainset CDD_single`: Low light (L), Haze (H), Rain (R) and Snow (S)
-+ `--trainset CDD_double`: L+H, L+R, L+S, H+R, H+S
-+ `--trainset CDD_triple`: L+H+R, L+H+S
-+ `--trainset CDD_all`: CDD_single + CDD_double + CDD_triple at the same time
+</details>
 
-`````
-python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 deblur synllie --trainset [CDD11_single/CDD11_double/CDD11_triple/CDD11_all] --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
-`````
+<br>
+<details>
+  <summary>
+  <font >All-in-One: 5 Degradations</font>
+  </summary>
+
+  `````
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 deblur synllie --trainset standard --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
+  `````
+
+</details>
+
+
+<br>
+<details>
+  <summary>
+  <font >CDD11: Composited Degradations</font>
+  </summary>
+
+  You can also train our models from scratch on the composited degradations dataset [CDD11](https://github.com/gy65896/OneRestore) with four different setups running following commands:
+
+  + `--trainset CDD_single`: Low light (L), Haze (H), Rain (R) and Snow (S)
+  + `--trainset CDD_double`: L+H, L+R, L+S, H+R, H+S
+  + `--trainset CDD_triple`: L+H+R, L+H+S
+  + `--trainset CDD_all`: CDD_single + CDD_double + CDD_triple at the same time
+
+  `````
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 deblur synllie --trainset [CDD11_single/CDD11_double/CDD11_triple/CDD11_all] --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
+  `````
+
+</details>
 
 
 ## Citation
