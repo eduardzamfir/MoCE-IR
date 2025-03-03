@@ -71,9 +71,7 @@ bash install.sh
 ````
 
 ## Usage
-Pre-trained checkpoints and visual results can be downloaded [here](https://drive.google.com/drive/folders/1pQBceb8cCPdIzbqbNNGqV5qNXzzqL4uK?usp=share_link). Place the checkpoints in `checkpoints/`.
-
-In `options` you can find the corresponding config files for reproducing our experiments.
+Pre-trained checkpoints and visual results can be downloaded [here](https://drive.google.com/drive/folders/1pQBceb8cCPdIzbqbNNGqV5qNXzzqL4uK?usp=share_link).
 
 ### **Evaluation**
 For testing the pre-trained checkpoints please use following commands. Replace `[MODEL]_` with desired model configuration. Argument `--benchmarks` accepts also a list of `str` and will iterate over defined testsets.
