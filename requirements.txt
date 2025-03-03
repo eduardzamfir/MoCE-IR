@@ -1,0 +1,12 @@
+pillow
+numpy
+scikit-image
+scikit-learn
+einops
+opencv-python
+matplotlib
+wandb
+scipy
+tqdm 
+torchmetrics
+fvcore
