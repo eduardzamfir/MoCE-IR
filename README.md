@@ -14,6 +14,7 @@
 
 
 ## Latest
+- `03/04/2025`: Full code & models release.
 - `02/27/2025`: Our work got accepted at CVPR 2025! Stay tuned for full code & model release. 🎉🥳
 - `11/28/2024`: Repository is created.
 
@@ -35,7 +36,7 @@ Extensive experiments validate our approach, demonstrating the ability to bypass
 <br>
 <details>
   <summary>
-  <font size="+1">All-in-One Restoration: Haze, Rain, Noise</font>
+  <font>All-in-One Restoration: Haze, Rain, Noise</font>
   </summary>
   <p align="center">
   <img src = "assets/aio_3_table.png">
@@ -45,7 +46,7 @@ Extensive experiments validate our approach, demonstrating the ability to bypass
 <br>
 <details>
   <summary>
-  <font size="+1">All-in-One Restoration: Haze, Rain, Noise, Blur, Low Light</font>
+  <font>All-in-One Restoration: Haze, Rain, Noise, Blur, Low Light</font>
   </summary>
   <p align="center">
   <img src = "assets/aio_5_table.png">
@@ -71,7 +72,8 @@ bash install.sh
 ````
 
 ## Usage
-Pre-trained checkpoints and visual results can be downloaded [here](https://drive.google.com/drive/folders/1pQBceb8cCPdIzbqbNNGqV5qNXzzqL4uK?usp=share_link).
+You can download the pre-trained checkpoints and visual results [here](https://drive.google.com/drive/folders/1pQBceb8cCPdIzbqbNNGqV5qNXzzqL4uK?usp=share_link). Please create a `checkpoints` directory and place the downloaded models inside. To access the datasets used in this project, refer to [PromptIR](https://github.com/va1shn9v/PromptIR) and [AirNet](https://github.com/XLearning-SCU/2022-CVPR-AirNet). Additional information will be provided soon.
+
 
 ### **Evaluation**
 For testing the pre-trained checkpoints please use following commands. Replace `[MODEL]_` with desired model configuration. Argument `--benchmarks` accepts also a list of `str` and will iterate over defined testsets.
@@ -84,15 +86,15 @@ For testing the pre-trained checkpoints please use following commands. Replace `
   
   **1. Rain100L**
   `````
-  python src/test.py --benchmarks derain --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  python src/test.py --model [MODEL] --benchmarks derain --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
   `````
   **2. SOTS**
   `````
-  python src/test.py --benchmarks dehaze --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  python src/test.py --model [MODEL] --benchmarks dehaze --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
   `````
   **3. CBSD68**
   `````
-  python src/test.py --benchmarks denoise_15 denoise_25 denoise_50 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  python src/test.py --model [MODEL] --benchmarks denoise_15 denoise_25 denoise_50 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
   `````
 
 </details>
@@ -106,23 +108,41 @@ For testing the pre-trained checkpoints please use following commands. Replace `
   
   **1. Rain100L**
   `````
-  python src/test.py --benchmarks derain --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain deblur synllie
+  python src/test.py --model [MODEL] --benchmarks derain --checkpoint_id [MODEL]_AIO5 --de_type denoise_15 denoise_25 denoise_50 dehaze derain deblur synllie
   `````
   **2. SOTS**
   `````
-  python src/test.py --benchmarks dehaze --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  python src/test.py --model [MODEL] --benchmarks dehaze --checkpoint_id [MODEL]_AIO5 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
   `````
   **3. CBSD68**
   `````
-  python src/test.py --benchmarks denoise_25 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  python src/test.py --model [MODEL] --benchmarks denoise_25 --checkpoint_id [MODEL]_AIO5 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
   `````
   **4. GoPro**
   `````
-  python src/test.py --benchmarks gopro --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  python src/test.py --model [MODEL] --benchmarks gopro --checkpoint_id [MODEL]_AIO5 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
   `````
   **5. LoLv1**
   `````
-  python src/test.py --benchmarks lolv1 --checkpoint_id [MODEL]_AIO3 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  python src/test.py --model [MODEL] --benchmarks lolv1 --checkpoint_id [MODEL]_AIO5 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  `````
+
+</details>
+
+
+<br>
+<details>
+  <summary>
+  <font >CDD11: Composited Degradations</font>
+  </summary>
+  
+  Replace `[DEG_CONFIG]` with desired configuraton: 
+  + Single degradation: `low`, `haze`, `rain` or `snow`
+  + Double degradations: `low_haze`, `low_rain`, `low_snow`, `haze_rain` or `haze_snow`
+  + Triple degradations: `low_haze_rain` and `low_haze_snow`
+
+  `````
+  python src/test.py --model [MODEL] --checkpoint_id [MODEL]_CDD11 --trainset CDD11_[DEG_CONFIG] --benchmarks cdd11 --de_type denoise_15 denoise_25 denoise_50 dehaze derain deblur synllie
   `````
 
 </details>
@@ -140,7 +160,7 @@ Use following commands to train the *lightweight* `MoCE-IR-S` or *heavy* `MoCE-I
   </summary>
 
   `````
-  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type denoise_15 denoise_25 denoise_50 dehaze derain --trainset standard --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
   `````
 
 </details>
@@ -152,7 +172,7 @@ Use following commands to train the *lightweight* `MoCE-IR-S` or *heavy* `MoCE-I
   </summary>
 
   `````
-  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 deblur synllie --trainset standard --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type denoise_15 denoise_25 denoise_50 dehaze derain deblur synllie --trainset standard --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
   `````
 
 </details>
@@ -164,15 +184,15 @@ Use following commands to train the *lightweight* `MoCE-IR-S` or *heavy* `MoCE-I
   <font >CDD11: Composited Degradations</font>
   </summary>
 
-  You can also train our models from scratch on the composited degradations dataset [CDD11](https://github.com/gy65896/OneRestore) with four different setups running following commands:
+  You can also train our models from scratch on the composited degradations dataset [CDD11](https://github.com/gy65896/OneRestore) running following command:
 
-  + `--trainset CDD_single`: Low light (L), Haze (H), Rain (R) and Snow (S)
-  + `--trainset CDD_double`: L+H, L+R, L+S, H+R, H+S
-  + `--trainset CDD_triple`: L+H+R, L+H+S
+  + `CDD_single`: Low light (L), Haze (H), Rain (R) and Snow (S)
+  + `CDD_double`: L+H, L+R, L+S, H+R, H+S
+  + `CDD_triple`: L+H+R, L+H+S
   + `--trainset CDD_all`: CDD_single + CDD_double + CDD_triple at the same time
 
   `````
-  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type derain dehaze denoise_15 denoise_25 denoise_50 deblur synllie --trainset [CDD11_single/CDD11_double/CDD11_triple/CDD11_all] --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --trainset CDD11_all --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
   `````
 
 </details>

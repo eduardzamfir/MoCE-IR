@@ -4,7 +4,7 @@ results
 train_ckpt
 visuals
 tests
-src
+checkpoints/
 
 
 *.DS_Store

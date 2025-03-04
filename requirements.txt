@@ -10,3 +10,5 @@ scipy
 tqdm 
 torchmetrics
 fvcore
+lightning
+tensorboard
