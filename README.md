@@ -41,7 +41,7 @@ Extensive experiments validate our approach, demonstrating the ability to bypass
   <font>All-in-One Restoration: Haze, Rain, Noise</font>
   </summary>
   <p align="center">
-  <img src = "assets/aio_3_table.png">
+  <img src = "assets/results_aio_3.png">
   </p>
 </details>
 
@@ -51,7 +51,7 @@ Extensive experiments validate our approach, demonstrating the ability to bypass
   <font>All-in-One Restoration: Haze, Rain, Noise, Blur, Low Light</font>
   </summary>
   <p align="center">
-  <img src = "assets/aio_5_table.png">
+  <img src = "assets/results_aio_5.png">
   </p>
 </details>
 
