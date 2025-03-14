@@ -194,7 +194,7 @@ Use following commands to train the *lightweight* `MoCE-IR-S` or *heavy* `MoCE-I
   + `--trainset CDD_all`: CDD_single + CDD_double + CDD_triple at the same time
 
   `````
-  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --trainset CDD11_all --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --trainset CDD11_all --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01 --fft_loss_weight 0.1 --de_type denoise_15 denoise_25 denoise_50 dehaze derain
   `````
 
 </details>
