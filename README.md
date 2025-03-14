@@ -162,7 +162,7 @@ Use following commands to train the *lightweight* `MoCE-IR-S` or *heavy* `MoCE-I
   </summary>
 
   `````
-  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type denoise_15 denoise_25 denoise_50 dehaze derain --trainset standard --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type denoise_15 denoise_25 denoise_50 dehaze derain --trainset standard --num_gpus 4 --loss_type FFT --fft_loss_weight 0.1 --balance_loss_weight 0.01
   `````
 
 </details>
@@ -174,7 +174,7 @@ Use following commands to train the *lightweight* `MoCE-IR-S` or *heavy* `MoCE-I
   </summary>
 
   `````
-  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type denoise_15 denoise_25 denoise_50 dehaze derain deblur synllie --trainset standard --num_gpus 4 --loss_type FFT --balance_loss_weight 0.01
+  python src/train.py --model [MoCE_IR_S/MoCE_IR] --batch_size 8 --de_type denoise_15 denoise_25 denoise_50 dehaze derain deblur synllie --trainset standard --num_gpus 4 --loss_type FFT --fft_loss_weight 0.1 --balance_loss_weight 0.01
   `````
 
 </details>
